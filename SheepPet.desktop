@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Desktop Sheep Pet
+Comment=Interactive animated desktop sheep pet
+Exec=/config/Desktop/test2/launch_pet.sh
+Icon=/config/Desktop/test2/pet_icon.png
+Terminal=false
+Categories=Game;Utility;
+Path=/config/Desktop/test2

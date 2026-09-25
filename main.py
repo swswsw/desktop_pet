@@ -1,6 +1,12 @@
-"""Main application entry point for Desktop Sheep Pet."""
-
+import os
 import sys
+
+# Ensure X11/xcb backend is used on Linux desktops so absolute positioning
+# and interactive click-and-drag window movement work reliably.
+# (Pure Wayland xdg-shell intentionally ignores application move() requests and centers all windows)
+if "QT_QPA_PLATFORM" not in os.environ:
+    os.environ["QT_QPA_PLATFORM"] = "xcb"
+
 import argparse
 import signal
 from typing import List

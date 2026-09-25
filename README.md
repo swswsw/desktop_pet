@@ -2,86 +2,106 @@
 
 An interactive, animated desktop sheep pet for Linux. Designed with procedural pixel art animations, realistic physics, sound effects, needs/Tamagotchi stats, and rich user interactions.
 
+The pet starts near the **bottom-right** of your screen and can be freely **moved anywhere by click and drag**!
+
 ![Animations Showcase](animations_showcase.png)
 ![Customizations Showcase](customizations_showcase.png)
 
 ---
 
-## ✨ Features
+## 🚀 How to Run
 
-- **Charming Pixel Art Animations**:
-  - **Idle**: Blinking eyes, gentle breathing wool fluff, tail wiggles.
-  - **Walking / Trotting**: Smooth 6-frame trot cycle as it explores your screen.
-  - **Grazing**: Nibbles on clover and grass with chewing animations and sweet flower pops.
-  - **Happy Petting**: Bounces playfully with blushing cheeks and emits floating heart particles (`♥`).
-  - **Being Picked Up / Dragged**: Comically kicks and pedals its little legs in mid-air with wide surprised eyes `(O.O)`.
-  - **Falling with Gravity**: Bounces softly when hitting the desktop floor with a tiny dust puff.
-  - **Acrobatic Tricks**: Performs full 360° somersault flips.
-  - **Sleeping**: Curls into a snug woolly cloud ball with floating `Zzz` bubbles.
-  - **Shearing & Sweaters**: Shear its overgrown wool to reveal a skinny sheep rocking a cozy red striped sweater! Its wool grows back over time.
-
-- **Mouse Interactions**:
-  - **Left-Click (Tap)**: Pet the sheep! Increases happiness and emits hearts and cheerful purr chimes.
-  - **Click & Drag**: Pick the sheep up and move it anywhere on your desktop. Release or fling it in mid-air to see realistic gravity physics.
-  - **Double-Click**: Command your sheep to do a somersault trick!
-  - **Right-Click**: Opens a feature-packed context menu.
-
-- **Feeding System**:
-  - Drop treats onto your desktop:
-    - 🍎 **Crisp Red Apple**
-    - ☘ **Sweet 4-Leaf Clover**
-    - 🍪 **Chocolate Cookie**
-    - 🥕 **Crunchy Carrot**
-  - The sheep detects the dropped food, trots over eagerly, and munches it up with sound effects and happiness boosts!
-
-- **Customization & Accessories**:
-  - **Wool Colors**: Classic White, Strawberry Pink, Midnight Black, Golden Honey Fleece, Matcha Mint, Lavender, Sky Cloud Blue, and Pastel Rainbow.
-  - **Hats & Accessories**: Flower Crown, Cool Sunglasses, Party Hat, Bell Ribbon Collar, Dapper Top Hat.
-  - **Personalities**:
-    - *Free Wanderer*: Roams freely and grazes.
-    - *Curious*: Follows your mouse cursor around the screen.
-    - *Sleepyhead*: Loves napping frequently.
-    - *Calm*: Stays in one spot.
-
-- **Tamagotchi-style Pet Status Card**:
-  - View real-time meters for **Happiness**, **Fullness**, **Energy**, and **Wool Fluffiness**.
-  - One-click buttons to pet, feed, shear, or customize.
-
-- **Multi-Pet Support (Herd Mode)**:
-  - Spawn multiple sheep buddies that wander together on screen!
-
-- **Desktop Integration**:
-  - Runs in a lightweight, frameless, transparent overlay (`WA_TranslucentBackground`).
-  - Bounded snugly around the sheep so your desktop icons and other application windows remain completely clickable.
-  - Includes a desktop shortcut (`SheepPet.desktop`) on your desktop for 1-click launching.
+### Method 1: Desktop Shortcut (Easiest)
+Double-click the **Desktop Sheep Pet** (`SheepPet.desktop`) shortcut located on your Desktop.
 
 ---
 
-## 🚀 Quick Start
-
-### Launch via Desktop Icon
-Double-click the **Desktop Sheep Pet** shortcut on your desktop.
-
-### Launch via Terminal
+### Method 2: Terminal Launcher Script
+Open a terminal and run:
 ```bash
 cd /config/Desktop/test2
 ./launch_pet.sh
 ```
 
-### Command Line Options
+To run it in the background so you can close the terminal:
 ```bash
-# Spawn with specific wool color and accessory
+cd /config/Desktop/test2
+./launch_pet.sh > /dev/null 2>&1 &
+```
+
+---
+
+### Method 3: Python Command Line
+You can run it directly with Python and customize options:
+
+```bash
+cd /config/Desktop/test2
+python3 main.py
+```
+
+#### CLI Options & Customizations:
+| Flag | Description | Examples |
+|---|---|---|
+| `--color` | Wool color palette | `white`, `pink`, `black`, `golden`, `mint`, `lavender`, `sky_blue`, `rainbow` |
+| `--accessory` | Hat or accessory | `none`, `flower_crown`, `sunglasses`, `party_hat`, `bell_collar`, `top_hat` |
+| `--name` | Custom name for your sheep | `--name "Bella"` |
+| `--count` | Number of sheep to spawn (Herd Mode) | `--count 3` |
+| `--scale` | Pixel art scaling factor (default: 3) | `--scale 4` (larger), `--scale 2` (smaller) |
+| `--no-sound` | Start with sound effects muted | `--no-sound` |
+
+**Examples:**
+```bash
+# Spawn a pink sheep wearing a flower crown named Bella:
 python3 main.py --color pink --accessory flower_crown --name "Bella"
 
-# Spawn a herd of 4 sheep friends
-python3 main.py --count 4
+# Spawn a flock of 3 sheep friends:
+python3 main.py --count 3
 
-# Run with custom scale and muted audio
+# Run silently with extra large pixels:
 python3 main.py --scale 4 --no-sound
 ```
 
-Available colors: `white`, `pink`, `black`, `golden`, `mint`, `lavender`, `sky_blue`, `rainbow`.  
-Available accessories: `none`, `flower_crown`, `sunglasses`, `party_hat`, `bell_collar`, `top_hat`.
+---
+
+### How to Stop / Close the Pet:
+- **Via Mouse**: Right-click the sheep and select **"❌ Quit Pet"**.
+- **Via Terminal**:
+  ```bash
+  pkill -f "python3.*main.py"
+  ```
+
+---
+
+## 🎮 Controls & Interactions
+
+| Action | Control | What Happens |
+|---|---|---|
+| **Move the Pet** | **Click & Drag** (Hold Left Click) | Pick up the sheep and move it anywhere on your screen. Release to place it. |
+| **Pet the Sheep** | **Quick Left-Click (Tap)** | Blushes, jumps for joy, spawns floating hearts (`♥`), and purrs. |
+| **Acrobatic Trick** | **Double-Click** | Performs an acrobatic 360° somersault flip! |
+| **Open Menu** | **Right-Click** | Opens context menu to feed treats, shear wool, change colors, put on hats, or view stats. |
+| **Feed Snacks** | Right-Click ➔ **☘ Feed Treat...** | Drop apples (🍎), clovers (☘), cookies (🍪), or carrots (🥕) for the sheep to run over and eat. |
+| **Drop to Floor** | Right-Click ➔ **⬇ Drop to Bottom Floor** | If perched high up, drops the sheep back down with gravity physics and a bounce. |
+| **Status Card** | Right-Click ➔ **📊 Pet Status Card** | Displays Tamagotchi gauges (Happiness, Fullness, Energy, Wool Puffiness). |
+
+---
+
+## ✨ Features
+
+- **Starting Position**: Starts near the bottom-right corner of the desktop, on top of the taskbar facing inward.
+- **Physics & Drag-and-Drop**: Moves smoothly with cursor; drops securely onto the desktop or snaps flush to the taskbar floor.
+- **Procedural Pixel-Art Animations**:
+  - **Idle**: Blinking eyes, gentle breathing wool fluff, tail wiggles.
+  - **Walking / Trotting**: Smooth trot cycle wandering across your screen.
+  - **Grazing**: Nibbles on clover and grass with sweet flower pops.
+  - **Happy Petting**: Bounces playfully with blushing cheeks and hearts (`♥`).
+  - **Drag / Dangle**: Pedals little legs in mid-air with wide surprised eyes `(O.O)`.
+  - **Falling & Landing**: Wind resistance fall with squash-and-stretch landing dust puffs.
+  - **Acrobatic Flip**: Full 360° rotation trick.
+  - **Sleeping**: Curls into a snug cloud ball with floating `Zzz` bubbles.
+  - **Sheared & Sweaters**: Shear its wool to reveal a cozy red striped sweater! Wool grows back over time.
+- **Audio Synthesizer**: Built-in 8-bit procedural sound effects (baa, munch, pop, boing, chime).
+- **Settings Persistence**: Custom name, wool color, accessory, and stats are saved to `~/.config/desktop_sheep_pet/settings.json`.
 
 ---
 
@@ -94,11 +114,12 @@ Available accessories: `none`, `flower_crown`, `sunglasses`, `party_hat`, `bell_
 │   ├── sprites.py       # Procedural pixel-art sprite engine & caching
 │   ├── audio.py         # 8-bit sound synthesis (WAV) & QtMultimedia player
 │   ├── food_item.py     # Interactive falling snack widgets
-│   ├── sheep_widget.py  # Main pet window, physics, AI state machine & interactions
+│   ├── sheep_widget.py  # Main pet window, drag-and-drop, physics & AI
 │   ├── dialogs.py       # Status card HUD, Style dialog, and Help guide
 │   └── storage.py       # State & settings persistence (JSON)
 ├── main.py              # Application lifecycle, herd manager & CLI options
 ├── launch_pet.sh        # Bash runner script
 ├── test_pet.py          # Automated verification test suite
+├── SheepPet.desktop     # Desktop launcher shortcut
 └── README.md            # Documentation
 ```
