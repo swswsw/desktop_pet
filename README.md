@@ -1,3 +1,5 @@
+# buildwithgemini-desktop_pet
+
 # 🐑 Desktop Animated Sheep Pet
 
 An interactive, animated desktop sheep pet for Linux. Designed with procedural pixel art animations, realistic physics, sound effects, needs/Tamagotchi stats, and rich user interactions.
